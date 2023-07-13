@@ -1,4 +1,9 @@
+<script setup>
+import Navbar from './components/layout/TheHeader.vue'
+</script>
+
 <template>
+  <navbar />
   <router-view></router-view>
 </template>
 

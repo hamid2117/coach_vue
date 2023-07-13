@@ -1,13 +1,12 @@
 <template>
-  asdfasdfasdfasdfasdfasdf
   <div>
     <base-dialog>
       <!--<p>{{ error }}</p>-->
     </base-dialog>
-    <section></section>
+    <section>Filter</section>
     <section>
       <base-card>
-        <div class="controls"></div>
+        <div class="controls">list</div>
         <div>
           <base-spinner></base-spinner>
         </div>
