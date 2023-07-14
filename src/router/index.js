@@ -4,9 +4,29 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/'
+      path: '/',
+      redirect: '/coaches'
     },
-    { path: '/:notFound(.*)', component: NotFound }
+    {
+      path: '/coaches',
+      component: null
+    },
+    {
+      path: '/coaches/:id',
+      component: null
+    },
+    {
+      path: '/register',
+      component: null
+    },
+    {
+      path: '/requests',
+      component: null
+    },
+    {
+      path: '/:notFound(.*)',
+      component: null
+    }
   ]
 })
 
