@@ -1,3 +1,7 @@
+<script setup>
+import CoachItem from '../../components/coaches/CoachItem.vue'
+</script>
+
 <template>
   <div>
     <base-dialog>
@@ -7,10 +11,19 @@
     <section>
       <base-card>
         <div class="controls">
-          <div v-for="(item, index) in coaches" :key="index">
-            <h3>{{ item.firstName }}</h3>
-          </div>
+          <button>Refresh</button>
+          <router-link to="/register">Register as Coach</router-link>
         </div>
+        <ul>
+          <li v-for="item in coaches" :key="item.id">
+            <coach-item
+              :firstName="item.firstName"
+              :lastName="item.lastName"
+              :rate="item.hourlyRate"
+              :id="item"
+            />
+          </li>
+        </ul>
         <div>
           <base-spinner></base-spinner>
         </div>
@@ -20,7 +33,6 @@
   </div>
 </template>
 <script>
-import coaches from '../../store/modules/coaches'
 import { mapGetters } from 'vuex'
 export default {
   computed: {

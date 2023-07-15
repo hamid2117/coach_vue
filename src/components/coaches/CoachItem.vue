@@ -1,17 +1,33 @@
 <template>
   <li>
-    <!--<h3>{{ fullName }}</h3>-->
-    <!--<h4>${{ rate }}/hour</h4>-->
-    <div></div>
+    <h3>{{ fullName }}</h3>
+    <h4>${{ rate }}/hour</h4>
+    <div>
+      <span v-for="(area, index) in areas" :key="index"> {{ area }}</span>
+    </div>
     <div class="actions">
-      <base-button mode="outline" link>Contact</base-button>
-      <base-button link>View Details</base-button>
+      <router-link :to="coachContactLink" mode="outline" link>Contact</router-link>
+      <router-link :to="coachDetailLink">View Details</router-link>
     </div>
   </li>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['firstName', 'lastName', 'id', 'areas', 'description', 'rate'],
+  computed: {
+    fullName() {
+      console.log(this.id)
+      return `${this.firstName} ${this.lastName}`
+    },
+    coachDetailLink() {
+      return this.$route.path + this.id
+    },
+    coachContactLink() {
+      return this.$route.path + this.id + 'contact'
+    }
+  }
+}
 </script>
 
 <style scoped>
