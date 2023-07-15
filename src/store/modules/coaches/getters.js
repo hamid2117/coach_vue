@@ -1,5 +1,5 @@
 export default {
-  coaches() {
-    return this.state.coaches
+  coaches(state) {
+    return state.coaches
   }
 }

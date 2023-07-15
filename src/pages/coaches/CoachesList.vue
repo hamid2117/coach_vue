@@ -6,7 +6,11 @@
     <section>Filter</section>
     <section>
       <base-card>
-        <div class="controls">list</div>
+        <div class="controls">
+          <div v-for="(item, index) in coaches" :key="index">
+            <h3>{{ item.firstName }}</h3>
+          </div>
+        </div>
         <div>
           <base-spinner></base-spinner>
         </div>
@@ -15,7 +19,15 @@
     </section>
   </div>
 </template>
-
+<script>
+import coaches from '../../store/modules/coaches'
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters('coach', ['coaches'])
+  }
+}
+</script>
 <style scoped>
 ul {
   list-style: none;
