@@ -8,9 +8,11 @@ import CoachItem from '../../components/coaches/CoachItem.vue'
       <!--<p>{{ error }}</p>-->
     </base-dialog>
     <section>
+      <coach-filter />
+    </section>
+    <section>
       <base-card>
         <div class="controls">
-          <base-button>Filter</base-button>
           <base-button>Refresh</base-button>
           <base-button link mode="outline" to="/register">Register as Coach</base-button>
         </div>

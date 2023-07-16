@@ -2,22 +2,37 @@
   <base-card>
     <h2>Find Your Coach</h2>
     <span class="filter-option">
-      <input type="checkbox" id="frontend" />
+      <input type="checkbox" id="frontend" checked @change="handleFilter" />
       <label for="frontend">Frontend</label>
     </span>
     <span class="filter-option">
-      <input type="checkbox" id="backend" />
+      <input type="checkbox" id="backend" checked @change="handleFilter" />
       <label for="backend">Backend</label>
     </span>
     <span class="filter-option">
-      <input type="checkbox" id="career" />
+      <input type="checkbox" id="career" checked @change="handleFilter" />
       <label for="career">Career</label>
     </span>
   </base-card>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      filterData: {
+        frontend: true,
+        backend: true,
+        career: true
+      }
+    }
+  },
+  methods: {
+    handleFilter(event) {
+      console.log(event.id)
+    }
+  }
+}
 </script>
 
 <style scoped>
