@@ -2,22 +2,23 @@
   <div>
     <section>
       <base-card>
-        <!--<h2>{{ fullName }}</h2>-->
-        <!--<h3>${{ rate }}/hour</h3>-->
+        <h2>{{ fullName }}</h2>
+        <h3>${{ rate }}/hour</h3>
       </base-card>
     </section>
     <section>
       <base-card>
         <header>
           <h2>Interested? Reach out now!</h2>
-          <!--<base-button link :to="contactLink">Contact</base-button>-->
+          <base-button link :to="contactLink">Contact</base-button>
         </header>
         <router-view></router-view>
       </base-card>
     </section>
     <section>
       <base-card>
-        <!--<p>{{ description }}</p>-->
+        <base-badge v-for="(area, index) in areas" :key="index" :type="area" :title="area" />
+        <p>{{ description }}</p>
       </base-card>
     </section>
   </div>
@@ -31,6 +32,27 @@ export default {
       coachData: null
     }
   },
-  computed: {}
+  created() {
+    this.coachData = this.$store.getters['coach/coaches'].find((data) => data.id === this.id)
+  },
+
+  computed: {
+    fullName() {
+      return this.coachData.firstName + ' ' + this.coachData.lastName
+    },
+    contactLink() {
+      return this.$route.path + '/contact'
+    },
+    rate() {
+      return this.coachData.hourlyRate
+    },
+    description() {
+      return this.coachData.description
+    },
+    areas() {
+      console.log(this.coachData.areas)
+      return this.coachData.areas
+    }
+  }
 }
 </script>
