@@ -23,4 +23,14 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  props: ['id'],
+  data() {
+    return {
+      coachData: null
+    }
+  },
+  computed: {}
+}
+</script>
