@@ -7,27 +7,28 @@ import CoachItem from '../../components/coaches/CoachItem.vue'
     <base-dialog>
       <!--<p>{{ error }}</p>-->
     </base-dialog>
-    <section>Filter</section>
     <section>
       <base-card>
         <div class="controls">
-          <button>Refresh</button>
-          <router-link to="/register">Register as Coach</router-link>
+          <base-button>Filter</base-button>
+          <base-button>Refresh</base-button>
+          <base-button link mode="outline" to="/register">Register as Coach</base-button>
         </div>
-        <ul>
+        <ul v-if="coaches.length">
           <li v-for="item in coaches" :key="item.id">
             <coach-item
               :firstName="item.firstName"
               :lastName="item.lastName"
               :rate="item.hourlyRate"
-              :id="item"
+              :id="item.id"
+              :areas="item.areas"
             />
           </li>
         </ul>
+        <h3 v-else>No coaches found.</h3>
         <div>
           <base-spinner></base-spinner>
         </div>
-        <h3>No coaches found.</h3>
       </base-card>
     </section>
   </div>

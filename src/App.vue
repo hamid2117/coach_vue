@@ -1,10 +1,13 @@
 <script setup>
 import Navbar from './components/layout/TheHeader.vue'
+import BaseCard from './components/ui/BaseCard.vue'
 </script>
 
 <template>
   <navbar />
-  <router-view></router-view>
+  <base-card>
+    <router-view></router-view>
+  </base-card>
 </template>
 
 <script></script>

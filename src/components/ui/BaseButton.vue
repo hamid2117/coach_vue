@@ -1,14 +1,30 @@
 <template>
-  <button>
+  <button v-if="!link" :class="mode">
     <slot></slot>
   </button>
-  <router-link>
+  <router-link v-else :class="mode" :to="to">
     <slot></slot>
   </router-link>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    mode: {
+      type: String,
+      required: false
+    },
+    link: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    to: {
+      type: String,
+      required: false
+    }
+  }
+}
 </script>
 
 <style scoped>

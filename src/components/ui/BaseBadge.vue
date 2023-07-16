@@ -1,11 +1,18 @@
 <template>
   <span class="badge" :class="type">
-    <!--{{ text }}-->
+    {{ text }}
   </span>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['type', 'title'],
+  computed: {
+    text() {
+      return this.title.upperCase()
+    }
+  }
+}
 </script>
 
 <style scoped>

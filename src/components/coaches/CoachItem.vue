@@ -3,11 +3,11 @@
     <h3>{{ fullName }}</h3>
     <h4>${{ rate }}/hour</h4>
     <div>
-      <span v-for="(area, index) in areas" :key="index"> {{ area }}</span>
+      <span v-for="(area, index) in areas" :key="index">{{ area }}</span>
     </div>
     <div class="actions">
-      <router-link :to="coachContactLink" mode="outline" link>Contact</router-link>
-      <router-link :to="coachDetailLink">View Details</router-link>
+      <base-button link :to="coachContactLink" mode="outline">Contact</base-button>
+      <base-button link :to="coachDetailLink">View Details</base-button>
     </div>
   </li>
 </template>
@@ -21,10 +21,10 @@ export default {
       return `${this.firstName} ${this.lastName}`
     },
     coachDetailLink() {
-      return this.$route.path + this.id
+      return this.$route.path + '/' + this.id
     },
     coachContactLink() {
-      return this.$route.path + this.id + 'contact'
+      return this.$route.path + '/' + this.id + '/contact'
     }
   }
 }
