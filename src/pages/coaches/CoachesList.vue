@@ -1,5 +1,6 @@
 <script setup>
 import CoachItem from '../../components/coaches/CoachItem.vue'
+import CoachFilter from '../../components/coaches/CoachFilter.vue'
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import CoachItem from '../../components/coaches/CoachItem.vue'
       <!--<p>{{ error }}</p>-->
     </base-dialog>
     <section>
-      <coach-filter />
+      <coach-filter @handle-filter="filterData" />
     </section>
     <section>
       <base-card>
@@ -36,10 +37,37 @@ import CoachItem from '../../components/coaches/CoachItem.vue'
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
 export default {
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        career: true
+      }
+    }
+  },
   computed: {
-    ...mapGetters('coach', ['coaches'])
+    coaches() {
+      const coachesData = this.$store.getters['coach/coaches'].filter((data) => {
+        if (!this.activeFilters.frontend && !data.areas.includes('frontend')) {
+          return false
+        }
+        if (!this.activeFilters.backend && !data.areas.includes('backend')) {
+          return false
+        }
+        if (!this.activeFilters.career && !data.areas.includes('career')) {
+          return false
+        }
+        return true
+      })
+      return coachesData
+    }
+  },
+  methods: {
+    filterData(data) {
+      this.activeFilters = data
+    }
   }
 }
 </script>

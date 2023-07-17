@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  emits: ['handle-filter'],
   data() {
     return {
       filterData: {
@@ -29,7 +30,12 @@ export default {
   },
   methods: {
     handleFilter(event) {
-      console.log(event.id)
+      const selectedData = {
+        ...this.filterData,
+        [event.target.id]: event.target.checked
+      }
+      this.filterData = selectedData
+      this.$emit('handle-filter', selectedData)
     }
   }
 }
