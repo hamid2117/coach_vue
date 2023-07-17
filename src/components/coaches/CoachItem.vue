@@ -17,7 +17,6 @@ export default {
   props: ['firstName', 'lastName', 'id', 'areas', 'description', 'rate'],
   computed: {
     fullName() {
-      console.log(this.id)
       return `${this.firstName} ${this.lastName}`
     },
     coachDetailLink() {

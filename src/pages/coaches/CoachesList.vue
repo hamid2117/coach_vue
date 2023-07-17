@@ -15,7 +15,9 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue'
       <base-card>
         <div class="controls">
           <base-button>Refresh</base-button>
-          <base-button link mode="outline" to="/register">Register as Coach</base-button>
+          <base-button v-if="!isCoach" link mode="outline" to="/register"
+            >Register as Coach</base-button
+          >
         </div>
         <ul v-if="coaches.length">
           <li v-for="item in coaches" :key="item.id">
@@ -37,6 +39,7 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue'
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -62,7 +65,8 @@ export default {
         return true
       })
       return coachesData
-    }
+    },
+    ...mapGetters('coach', ['isCoach'])
   },
   methods: {
     filterData(data) {

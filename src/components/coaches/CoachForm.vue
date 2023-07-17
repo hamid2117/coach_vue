@@ -61,7 +61,9 @@ export default {
         rate: this.rate,
         areas: this.areas
       }
-      console.log(formData)``
+
+      this.$store.dispatch({ type: 'coach/registerCoach', formData })
+      this.$router.replace('/coaches')
     }
   }
 }
