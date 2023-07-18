@@ -2,20 +2,39 @@
   <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="email">Your E-Mail</label>
-      <input type="email" id="email" />
+      <input type="email" id="email" v-model.trim="email" />
     </div>
     <div class="form-control">
       <label for="message">Message</label>
-      <textarea rows="5" id="message"></textarea>
+      <textarea rows="5" id="message" v-model.trim="msg"></textarea>
     </div>
-    <p class="errors">Please enter a valid email and non-empty message.</p>
+    <p class="errors" v-if="formIsValid">Please enter a valid email and non-empty message.</p>
     <div class="actions">
       <base-button>Send Message</base-button>
     </div>
   </form>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      msg: '',
+      formIsValid: true
+    }
+  },
+
+  methods: {
+    submitForm() {
+      this.formIsValid = true
+      if (this.email === '' || this.msg === '') {
+        this.formIsValid = false
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 form {
