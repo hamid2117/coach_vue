@@ -73,23 +73,26 @@ export default {
       if (this.firstName.val === '') {
         this.firstName.isValid = false
         this.formIsValid = false
-      } else if (this.lastName.val === '') {
+      }
+      if (this.lastName.val === '') {
         this.lastName.isValid = false
         this.formIsValid = false
-      } else if (this.description.val === '') {
+      }
+      if (this.description.val === '') {
         this.description.isValid = false
         this.formIsValid = false
-      } else if (!this.rate.val || this.rate.val < 0) {
+      }
+      if (!this.rate.val || this.rate.val < 0) {
         this.rate.isValid = false
         this.formIsValid = false
-      } else if (this.areas.val.length === 0) {
+      }
+      if (this.areas.val.length === 0) {
         this.areas.isValid = false
         this.formIsValid = false
-      } else {
-        this.formIsValid = true
       }
     },
     handleSubmit() {
+      this.formIsValid = true
       this.checkFormValidation()
       if (!this.formIsValid) {
         return
