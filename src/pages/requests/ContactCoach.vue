@@ -38,8 +38,8 @@ export default {
         msg: this.msg,
         coachId: this.$route.params.id
       }
-      this.$store.dispatch('register/contactCoach', data)
-      this.$route.replace('/coaches')
+      this.$store.dispatch('request/contactCoach', data)
+      this.$router.replace('/coaches')
     }
   }
 }
