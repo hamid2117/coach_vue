@@ -36,7 +36,7 @@
       </div>
       <p v-if="!areas.isValid">At least one expertise must be selected.</p>
     </div>
-    <p>Please fix the above errors and submit again.</p>
+    <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
     <base-button>Register</base-button>
   </form>
 </template>
@@ -73,18 +73,20 @@ export default {
       if (this.firstName.val === '') {
         this.firstName.isValid = false
         this.formIsValid = false
-      }
-      if (this.lastName.val === '') {
+      } else if (this.lastName.val === '') {
         this.lastName.isValid = false
         this.formIsValid = false
-      }
-      if (this.description.val === '') {
+      } else if (this.description.val === '') {
         this.description.isValid = false
         this.formIsValid = false
-      }
-      if (!this.rate.val || this.rate.val < 0) {
+      } else if (!this.rate.val || this.rate.val < 0) {
         this.rate.isValid = false
         this.formIsValid = false
+      } else if (this.areas.val.length === 0) {
+        this.areas.isValid = false
+        this.formIsValid = false
+      } else {
+        this.formIsValid = true
       }
     },
     handleSubmit() {
