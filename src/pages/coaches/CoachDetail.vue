@@ -8,7 +8,7 @@
     </section>
     <section>
       <base-card>
-        <header>
+        <header v-if="!disableContactBtn">
           <h2>Interested? Reach out now!</h2>
           <base-button link :to="contactLink">Contact</base-button>
         </header>
@@ -39,6 +39,9 @@ export default {
   computed: {
     fullName() {
       return this.coachData.firstName + ' ' + this.coachData.lastName
+    },
+    disableContactBtn() {
+      return this.$route.path.includes('/contact')
     },
     contactLink() {
       return this.$route.path + '/contact'

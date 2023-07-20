@@ -30,6 +30,7 @@ export default {
       this.formIsValid = true
       if (this.email === '' || this.msg === '') {
         this.formIsValid = false
+        return
       }
     }
   }
