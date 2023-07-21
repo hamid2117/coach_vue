@@ -14,7 +14,7 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue'
     <section>
       <base-card>
         <div class="controls">
-          <base-button>Refresh</base-button>
+          <div />
           <base-button v-if="!isCoach" link mode="outline" to="/register"
             >Register as Coach</base-button
           >
