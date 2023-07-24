@@ -57,34 +57,34 @@ export default {
     }
   },
   methods: {
-    async submitForm() {
-      this.formIsValid = true
-      if (this.email === '' || !this.email.includes('@') || this.password.length < 6) {
-        this.formIsValid = false
-        return
-      }
+    //async submitForm() {
+    //  this.formIsValid = true
+    //  if (this.email === '' || !this.email.includes('@') || this.password.length < 6) {
+    //    this.formIsValid = false
+    //    return
+    //  }
 
-      this.isLoading = true
+    //  this.isLoading = true
 
-      const actionPayload = {
-        email: this.email,
-        password: this.password
-      }
+    //  const actionPayload = {
+    //    email: this.email,
+    //    password: this.password
+    //  }
 
-      try {
-        if (this.mode === 'login') {
-          await this.$store.dispatch('login', actionPayload)
-        } else {
-          await this.$store.dispatch('signup', actionPayload)
-        }
-        const redirectUrl = '/' + (this.$route.query.redirect || 'coaches')
-        this.$router.replace(redirectUrl)
-      } catch (err) {
-        this.error = err.message || 'Failed to authenticate, try later.'
-      }
+    //  try {
+    //    if (this.mode === 'login') {
+    //      await this.$store.dispatch('login', actionPayload)
+    //    } else {
+    //      await this.$store.dispatch('signup', actionPayload)
+    //    }
+    //    const redirectUrl = '/' + (this.$route.query.redirect || 'coaches')
+    //    this.$router.replace(redirectUrl)
+    //  } catch (err) {
+    //    this.error = err.message || 'Failed to authenticate, try later.'
+    //  }
 
-      this.isLoading = false
-    },
+    //  this.isLoading = false
+    //},
     switchAuthMode() {
       if (this.mode === 'login') {
         this.mode = 'signup'
